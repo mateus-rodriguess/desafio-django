@@ -6,6 +6,11 @@ from django.utils.text import slugify
 from apps.account.models import User
 
 
+class AvailableManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(available=True)
+
+
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     title = models.CharField("Titulo",max_length=120)
@@ -13,12 +18,17 @@ class Post(models.Model):
     text = models.TextField("Texto",null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     
+    available = models.BooleanField(default=True)
+    
+    objects = models.Manager()
+    available_mamager = AvailableManager()
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
     
     class Meta:
-        ordering = ('created',)
+        ordering = ('-created',)
     
     def __str__(self):
         return self.title[:20]

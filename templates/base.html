@@ -21,22 +21,24 @@
   {% include 'main/navbar.html' %}
   {% endblock navbar %}
 
-  {% block messages %}
-  {% if messages %}
-  <div class="container pt-0">
-      <ul class="messages">
-        {% for message in messages %}
-            <div {% if message.tags %} class="alert alert-{{ message.tags }}"  role="alert" {% endif %}>
-              {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}{% endif %}
-              {{ message }}
-            </div>
-          {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
-  
-  {% endblock %}
 
+  <div class="mt-3">
+    {% block messages %}
+      {% if messages %}
+      <div class="container">
+          <ul class="messages">
+            {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{ message.tags }}"  role="alert" {% endif %}>
+                  {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}{% endif %}
+                  {{ message }}
+                </div>
+              {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+    {% endblock %}
+  </div>
+  
   {% block content %}
   {% endblock content %}
 

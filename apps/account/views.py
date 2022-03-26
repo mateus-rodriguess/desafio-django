@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import UserCreationForm, ProfileForm
 from .models import Profile
-
+from apps.post.models import Post
 
 class CreateUser(generic.CreateView):
     """
@@ -23,8 +23,9 @@ def ProfileDetailView(request, slug):
     """
     user profile view
     """
+    posts = Post.objects.filter(author=request.user)
     profile = Profile.objects.get(user=request.user)
-    return render(request, "profile/profile.html", {"profile": profile})
+    return render(request, "profile/profile.html", {"profile": profile, "posts": posts})
 
 
 @login_required

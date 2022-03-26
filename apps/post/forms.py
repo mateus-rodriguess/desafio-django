@@ -1,6 +1,8 @@
 from django import forms
 from django.db.models import fields
 
+from .models import Post
+
 
 
 class SearchForm(forms.Form):
@@ -8,10 +10,10 @@ class SearchForm(forms.Form):
         "placeholder": "Pesquisar", "class": "form-control me-2", "type":"search"}), label="Pesquisar")
 
 
-# class ProductForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     
-#     class Meta:
-#         model = Product
-#         fields = ["available", "category", "description", "image", "ingredient", "name", "price"]
+    class Meta:
+        model = Post
+        fields = ["title", "text"]
          
 

@@ -46,9 +46,51 @@
                 </div>
                 <div class="card-body back-ground">
                     <div class="row gutters">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                            <p class="text-primary">Ultimo post:</p>
-                          
+
+                        <div class="col col-lg-12">
+                            {% if not posts %}
+                            <div class="">
+                                <h4>Nenhum post encontrado ._.</h4>
+                                <a class="nav-link active" href="{% url 'post:post_add'%}">
+                                    <button class="btn btn-success">Adicionar postagem</button>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% for post in posts %}
+                            <div class="card mb-2">
+                                <div class="card-header">
+                                    <p class="text-center">feature</p>
+                                </div>
+                                <div class="card-body back-ground">
+                                    <div class="account-settings">
+                                        <div class="user-profile">
+                                            <div class="col-12 d-flex justify-content-center ">
+                                                <p>{{post.title}}</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <p class="mt-3 mb-3">
+                                                    {{post.text|truncatewords:20|linebreaks}}</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <a href="{{ post.get_absolute_url }}">
+                                                    <button class="btn btn-primary">Go somewhere</button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="text-center">{{post.created}}</p>
+                                    <a href="{% url 'post:post_edit' post.slug %}">
+                                        <button class="btn btn-primary">Editar</button>
+                                    </a>
+                                    <a href="{% url 'post:post_delete' post.slug %}">
+                                        <button class="btn btn-danger">Deletar</button>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
                 </div>
