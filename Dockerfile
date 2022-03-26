@@ -16,7 +16,7 @@ RUN set -ex \
     && apk add --virtual .build-deps build-base \ 
     && python -m venv .venv \
     && /.venv/bin/pip install --upgrade pip \
-    && /.venv/bin/pip install -r /code/requirements.txt \
+    && /.venv/bin/pip install  -r /code/requirements.txt \
     && apk del .build-deps
 
 ENV VIRTUAL_ENV /.venv

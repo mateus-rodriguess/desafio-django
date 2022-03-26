@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: web
+    container_name: web_desafio
     command: >
       sh -c "python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
@@ -19,16 +19,10 @@ services:
       
   db:
     image: postgres:13
-    container_name: postgres
-    hostname: postgres
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_PASSWORD:35b23jk5b
-      - POSTGRES_USER:admin
-      - POSTGRES_DB:app
-      - POSTGRES_PORT:5432
-      - POSTGRES_HOST:postgres
+      - POSTGRES_PASSWORD=example
   
 volumes:
   postgres_data:

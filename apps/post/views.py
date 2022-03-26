@@ -25,6 +25,6 @@ def post_detail(request, slug):
 
     if not post:
         messages.add_message(request, messages.SUCCESS, "Post não encontrado")
-        return redirect('post:product_list')
+        return redirect('post:post_list')
 
-    return rende(request, "post/post-detail.html", {"post": post})
+    return render(request, "post/post-detail.html", {"post": post})
