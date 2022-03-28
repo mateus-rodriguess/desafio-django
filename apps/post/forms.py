@@ -7,7 +7,7 @@ from .models import Post
 
 class SearchForm(forms.Form):
     query = forms.CharField(required=False,max_length=50, widget=forms.TextInput(attrs={
-        "placeholder": "Pesquisar", "class": "form-control me-2", "type":"search"}), label="Pesquisar")
+        "placeholder": "Pesquisar", "class": "form-control me-2", "type":"search", "aria-label":"Search"}), label="Pesquisar")
 
 
 class PostForm(forms.ModelForm):

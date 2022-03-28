@@ -15,7 +15,7 @@
                             {{ form|crispy }}
                             <div class="justify-content-center text-right">
                                 <button type="submit" value="{{ next }}" class="btn btn-success mr-1">Salvar</button>
-                                <a href="{% url 'account:profile-detail-view' request.user %}"
+                                <a href="{% url 'account:profile-detail-view'%}"
                                     class="btn btn-primary">Voltar</a>
                             </div>
                         </form>

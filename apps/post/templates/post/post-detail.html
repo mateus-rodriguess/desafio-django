@@ -7,6 +7,7 @@
 {% block content %}
 <div class="container pt-0">
     <div class="row justify-content-md-center">
+        <div class="col col-lg-8">            
             <div class="card mb-2">
                 <div class="card-header">
                     <p class="text-center">feature</p>
@@ -25,8 +26,17 @@
                 </div>
                 <div class="card-footer">
                     <p class="text-center">{{post.created}}</p>
+                    {% if post.author == user %}
+                    <a href="{% url 'post:post_edit' post.slug %}">
+                        <button class="btn btn-primary">Editar</button>
+                    </a>
+                    <a href="{% url 'post:post_delete' post.slug %}" action="/">
+                        <button class="btn btn-danger">Deletar</button>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>

@@ -1,34 +1,37 @@
 {% load static %}
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">AMS</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">AMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="{% url 'post:post_add'%}">Adicionar post</a>
-          </li>
-        </ul>
-        {% if form %}
-        <form class="form-inline my-lg-0 p-3" action="" method="GET">
-            {{ form.query }}
-            <button class="ml-2 btn btn-success my-2 my-sm-0" type="submit" name="search_form">Pesquisar</button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'post:about'%}">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'post:post_add'%}">Adicionar post</a>
+        </li>
+      </ul>
+      {% if form_search %}
+        <form class="d-flex pl-1" action="" method="GET">
+          {{ form_search.query }}
+          <button class="btn btn-outline-success" type="submit" name="search_form">Pesquisar</button>
         </form>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <a class="navbar-brand" href="{% url 'account:profile-detail-view' request.user %}">
-            <h5> {{request.user}} </h5>
-        </a>
-        {% else %}
-        <a href="{% url 'account:login'%}"><h3>Login</h3></a>
-        {% endif %}
-      </div>
+      {% endif %}
+      {% if user.is_authenticated %}
+      <a class="navbar-brand" href="{% url 'account:profile-detail-view' %}">
+        <h5> {{request.user}} </h5>
+      </a>
+      {% else %}
+      <a href="{% url 'account:login'%}" class="navbar-brand" >
+        <h3>Login</h3>
+      </a>
+      {% endif %}
     </div>
-  </nav>
+  </div>
+</nav>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sobre{% endblock %}
+
+{% block content %}
+<div class="row justify-content-md-center">
+    <div class="col col-lg-6">
+        <div class="card  auth-card back-ground">
+            <div class="card-header">
+                <p class="text-center">Sobre</p>
+            </div>
+            <div class="card-body ">
+                <div class="">
+                    <h5>Site de postagem</h5>
+                    <p>
+                        Este é um pequeno site de postagem jeito em Django, que conta com além de fazer postagem um CRUD
+                        completo, uma área administrativa com o <a href="/admin">Django-admin</a>, um buscador para
+                        procurar postagem que pode ser encontrada pelo titulo ou texto, uma página de 
+                        <a href="{% url 'account:profile-detail-view' %}">Perfil</a> de usuários onde eles
+                        podem adicionar, apagar editar suas postagens.
+                    </p>
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <p class="text-center">Mateus Rodrigues</p>
+                <p class="text-center"><a href="https://github.com/mateus-rodriguess">Github</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
